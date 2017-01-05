@@ -1,0 +1,593 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>«Practical Vim» 3 | Jianwei&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Jianwei Xu">
+    
+
+    
+    <meta name="description" content="缓存区查看缓存区:ls查看当前被载入内存的缓存区:bnext切换到下一个缓存区%代表哪个缓存区在当前窗口可见#代表轮换缓冲区&amp;lt;C-^&amp;gt;在当前缓冲区和轮换缓冲区中切换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="«Practical Vim» 3">
+<meta property="og:url" content="http://yoursite.com/2015/12/03/Practical_Vim_3/index.html">
+<meta property="og:site_name" content="Jianwei's Blog">
+<meta property="og:description" content="缓存区查看缓存区:ls查看当前被载入内存的缓存区:bnext切换到下一个缓存区%代表哪个缓存区在当前窗口可见#代表轮换缓冲区&amp;lt;C-^&amp;gt;在当前缓冲区和轮换缓冲区中切换">
+<meta property="og:updated_time" content="2016-08-14T15:46:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="«Practical Vim» 3">
+<meta name="twitter:description" content="缓存区查看缓存区:ls查看当前被载入内存的缓存区:bnext切换到下一个缓存区%代表哪个缓存区在当前窗口可见#代表轮换缓冲区&amp;lt;C-^&amp;gt;在当前缓冲区和轮换缓冲区中切换">
+<meta name="twitter:creator" content="@xujianwei201314">
+
+    
+    
+    <link rel="icon" href="/img/favico.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jianwei&#39;s Blog" title="Jianwei&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jianwei&#39;s Blog">Jianwei&#39;s Blog</a></h1>
+				<h2 class="blog-motto">I plunge into books like the hungery into bread！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/03/Practical_Vim_3/" title="«Practical Vim» 3" itemprop="url">«Practical Vim» 3</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jianwei Xu" target="_blank" itemprop="author">Jianwei Xu</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-03T03:34:16.000Z" itemprop="datePublished"> 发表于 2015-12-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="缓存区"><a href="#缓存区" class="headerlink" title="缓存区"></a>缓存区</h2><h3 id="查看缓存区"><a href="#查看缓存区" class="headerlink" title="查看缓存区"></a>查看缓存区</h3><p><code>:ls</code>查看当前被载入内存的缓存区<br><code>:bnext</code>切换到下一个缓存区<br><code>%</code>代表哪个缓存区在当前窗口可见<br><code>#</code>代表轮换缓冲区<br><code>&lt;C-^&gt;</code>在当前缓冲区和轮换缓冲区中切换<br><a id="more"></a></p>
+<h3 id="切换缓存区"><a href="#切换缓存区" class="headerlink" title="切换缓存区"></a>切换缓存区</h3><p><code>:bprev</code> == <code>:bprevious</code> 切换到上一个缓存区<br><code>:bnext</code> == <code>:bNext</code> 切换到上一个缓存区<br><code>:bfirst</code> 切换到第一个缓存区<br><code>:blast</code> 切换到最后一个缓存区<br>使用<code>:ls</code>查看缓存区列表的时候，每一项前面有一个数字，这是vim在创建缓存区的时候给分配的，我们可以使用<code>:buffer N</code>来使某一个缓存区在当前页面显示出来。或者用更加直观的：<code>:buffer {bufname}</code>其中的{bufname}只要是缓存区名字中能唯一标识</p>
+<h3 id="删除缓存区"><a href="#删除缓存区" class="headerlink" title="删除缓存区"></a>删除缓存区</h3><p>先说明，删除缓存区并不会对文件产生任何影响，只是将内存中的那份副本给删除了。删除缓存去使用的命令是<code>:bdelete</code>,可以简写成<code>:bd</code>，其有两种用法：<code>:[range]bd</code>/<code>:bd N1 N2 N3 ...</code>第一种用法是删除[range]所包含的缓存区，比如<code>:3,6bd</code>表示删除标号为3、4、5、6的缓存区。第二种用法是删除单个的缓存区。没有什么好说的。一般情况下我们是不需要去删除缓存区的，所以这几个命令用得也不多噢～</p>
+<h3 id="使用参数列表将缓存区分组"><a href="#使用参数列表将缓存区分组" class="headerlink" title="使用参数列表将缓存区分组"></a>使用参数列表将缓存区分组</h3><p><code>:args</code>可以查看vim中的参数列表，输出中<code>[]</code>将标识处当前那个文件为活动文件，使用<code>:argdo</code>可以在每一个缓存区上运行一条EX命令.参数列表是vi遗留下来的功能，但是在vim中这个功能也有所增强，虽然与缓存区列表相比，参数列表显得有点寒酸，但请给他一个机会，它是缓存区列表一个强有力的补充<br>使用<code>args {argList}</code>可以修改vim的参数列表，其中{argList}可以是文件名、文件通配符、某个命令的输出(使用反引号);比如<code>:args index.html app.js</code>，这个命令会将后面所带的两个文件也加入到缓存区中，如果是大量文件，可以使用文件通配符。说到文件通配符，我们就能引出下一个话题了</p>
+<h3 id="Glob模式指定文件"><a href="#Glob模式指定文件" class="headerlink" title="Glob模式指定文件"></a>Glob模式指定文件</h3><p>和在shell中一样，<code>*</code>代表匹配0个或多个字符，并且它不能递归目录，与shell中不太一样的是：<code>**</code>可以匹配0个到任意个字符，并且他能递归进目录中，在上一个技巧中，我们正好可以使用这两个通配符来将大量文件加入缓存区中了。</p>
+<h2 id="窗口分割"><a href="#窗口分割" class="headerlink" title="窗口分割"></a>窗口分割</h2><h3 id="创建分割窗口"><a href="#创建分割窗口" class="headerlink" title="创建分割窗口"></a>创建分割窗口</h3><p><code>&lt;C-w&gt;s</code>水平分割窗口，<code>&lt;C-w&gt;v</code>垂直分割窗口，大屏幕必备神器。<br>以上两个key map 分别对应两个命令：<code>:sp[lit]{file}</code>和<code>:vsp[lit]{file}</code>.</p>
+<h3 id="窗口间切换"><a href="#窗口间切换" class="headerlink" title="窗口间切换"></a>窗口间切换</h3><p><code>&lt;C-w&gt;w</code>在窗口间循环切换<br><code>&lt;C-w&gt;h/j/k/l</code>切换打左/下/上/右边的窗口<br>实际上<code>&lt;C-w&gt;&lt;C-w/h/j/k/l&gt;</code>效果与后一个字符不使用<code>&lt;C&gt;</code>是一样的</p>
+<h3 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h3><p>最简单的是<code>:q</code>是关闭当前的窗口。<br>还有<code>:clo[se]</code>也是关闭当前窗口。<br>而<code>:on[ly]</code>是只保留当前窗口，关闭其他窗口。</p>
+<h3 id="调节窗口大小"><a href="#调节窗口大小" class="headerlink" title="调节窗口大小"></a>调节窗口大小</h3><p><code>&lt;C-w&gt;=</code>使得所有窗口等宽等高<br><code>&lt;C-w&gt;_</code>最大化当前窗口的高度<br><code>&lt;C-w&gt;|</code>最大化当前窗口的宽度<br><code>[N]&lt;C-w&gt;_</code>把活动窗口的高度设置为[N]行<br><code>[N]&lt;C-w&gt;|</code>把活动窗口的宽度设置为[N]列<br><code>[N]&lt;C-w&gt;&gt;</code>把活动窗口的大小调大[N]<br><code>[N]&lt;C-w&gt;&lt;</code>把活动窗口的大小调小[N]<br>vim也支持窗口重新排列，请查阅<code>:h window-moving</code></p>
+<h3 id="使用标签页"><a href="#使用标签页" class="headerlink" title="使用标签页"></a>使用标签页</h3><h4 id="切换窗口的工作目录"><a href="#切换窗口的工作目录" class="headerlink" title="切换窗口的工作目录"></a>切换窗口的工作目录</h4><p><code>lcd {path}</code>可以设置当前窗口的本地工作目录<br><code>lcd</code>只是作用在了当前窗口，而没有改变整个标签，如果一个标签包含了两个或者更多的窗口，我们可以使用<code>windo lcd {path}</code>来作用到所有这些窗口上</p>
+<h4 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h4><p><code>tabedit {filename}</code>打开一个新标签，并在这个标签中打开{filename}，如果没有加这个参数，那么会打开一个新标签，里面包含一个空缓存区。<br>如果当前标签页中不止一个窗口，那么可以使用<code>&lt;C-w&gt;T</code>来将当前活动窗口移动到新的标签中。</p>
+<h4 id="关闭标签"><a href="#关闭标签" class="headerlink" title="关闭标签"></a>关闭标签</h4><p>如果标签中只有一个窗口，那么使用<code>:q</code>/<code>:close</code>/<code>tabclose</code>都可以关闭一个标签<br>同样我们也可以使用<code>:tabonly</code>只保留当前活动的标签。</p>
+<h4 id="标签间的切换"><a href="#标签间的切换" class="headerlink" title="标签间的切换"></a>标签间的切换</h4><p>标签的开始标号是1,我们可以使用<code>[N]gt</code>在标签间跳转，如果省略掉[N]那么将会跳转到下一个标签，<code>gT</code>作用一样，不过是反向跳转<br>其对应的命令分别是：<br><code>:tabn[ext] {N}</code> -&gt; <code>{N} gt</code><br><code>:tabn[ext]</code> -&gt; <code>gt</code><br><code>:tabp[revious]</code> -&gt; <code>gT</code></p>
+<h4 id="重新排列标签"><a href="#重新排列标签" class="headerlink" title="重新排列标签"></a>重新排列标签</h4><p><code>：tabmove [N]</code>可以重新排列标签页，当[N]为0时，标签被移动到开头，如果省略[N]，标签将被移动到最后</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>►<a class="article-category-link" href="/categories/Tech/«Practical-Vim»/">«Practical Vim»</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/vim/">vim</a><a href="/tags/note/">note</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/12/03/Practical_Vim_3/" data-title="«Practical Vim» 3 | Jianwei&#39;s Blog" data-tsina="3884609162" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/23/Practical_Vim_4/" title="«Practical Vim» 4">
+  <strong>上一篇：</strong><br/>
+  <span>
+  «Practical Vim» 4</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/11/26/TheArtOfCommunicate/"  title="沟通的艺术课后感">
+ <strong>下一篇：</strong><br/> 
+ <span>沟通的艺术课后感
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/03/Practical_Vim_3/" data-title="«Practical Vim» 3" data-url="http://yoursite.com/2015/12/03/Practical_Vim_3/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/«Git版本控制管理»/" title="«Git版本控制管理»">«Git版本控制管理»<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/«Practical-Vim»/" title="«Practical Vim»">«Practical Vim»<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/夜游梦话/" title="夜游梦话">夜游梦话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/vim/" title="vim">vim<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/note/" title="note">note<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ShellScripts/" title="ShellScripts">ShellScripts<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/coding/" title="coding">coding<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ThoughtWorks/" title="ThoughtWorks">ThoughtWorks<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/systemd/" title="systemd">systemd<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/error/" title="error">error<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/font/" title="font">font<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tagCloud/" title="tagCloud">tagCloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.jianshu.com/users/f4f372fd4919/latest_articles" target="_blank" title="Jianwei&#39;s 简书">Jianwei&#39;s 简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/ShellScripts/" style="font-size: 13.33px;">ShellScripts</a> <a href="/tags/ThoughtWorks/" style="font-size: 10px;">ThoughtWorks</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/error/" style="font-size: 10px;">error</a> <a href="/tags/font/" style="font-size: 10px;">font</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/note/" style="font-size: 16.67px;">note</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/tagCloud/" style="font-size: 10px;">tagCloud</a> <a href="/tags/vim/" style="font-size: 20px;">vim</a>
+    </div>
+  </div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=0&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=3884609162&verifier=ba6e3e93&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Jianwei.Nice to me you! <br/>
+			This is my blog!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3884609162" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/jianwei666" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/xujianwei201314" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/xujianwei-47" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:xujianwei201314@icloud.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Jianwei Xu">Jianwei Xu</a>
+		
+		
+		</p>
+		<script type="text/javascript">
+          (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+          (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+          e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+          })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+          _st('install','n2DDxybWVFMWvmyKeD1r','2.0.0');
+        </script>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"jianwei666"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script>
+ (function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+ })();
+</script>
+
+<script>
+ (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+ })();
+</script>
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258374484'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258374484%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

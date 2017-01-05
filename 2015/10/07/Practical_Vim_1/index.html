@@ -1,0 +1,630 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>«Practical Vim» 1 | Jianwei&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Jianwei Xu">
+    
+
+    
+    <meta name="description" content="vim使用小技巧,鉴于大家都没有时间看长博文,我把它分成短文.
+1. &amp;lt;C-a&amp;gt; &amp;lt;C-x&amp;gt;对数字执行加减操作
+[count]&amp;lt;C-a&amp;gt;来使光标下的数字增加count
+[count]&amp;lt;C-x&amp;gt;使光标下的数字减小count">
+<meta property="og:type" content="article">
+<meta property="og:title" content="«Practical Vim» 1">
+<meta property="og:url" content="http://yoursite.com/2015/10/07/Practical_Vim_1/index.html">
+<meta property="og:site_name" content="Jianwei's Blog">
+<meta property="og:description" content="vim使用小技巧,鉴于大家都没有时间看长博文,我把它分成短文.
+1. &amp;lt;C-a&amp;gt; &amp;lt;C-x&amp;gt;对数字执行加减操作
+[count]&amp;lt;C-a&amp;gt;来使光标下的数字增加count
+[count]&amp;lt;C-x&amp;gt;使光标下的数字减小count">
+<meta property="og:image" content="http://7xl4y6.com1.z0.glb.clouddn.com/imageVIM显示tab截图.png">
+<meta property="og:updated_time" content="2016-08-14T15:46:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="«Practical Vim» 1">
+<meta name="twitter:description" content="vim使用小技巧,鉴于大家都没有时间看长博文,我把它分成短文.
+1. &amp;lt;C-a&amp;gt; &amp;lt;C-x&amp;gt;对数字执行加减操作
+[count]&amp;lt;C-a&amp;gt;来使光标下的数字增加count
+[count]&amp;lt;C-x&amp;gt;使光标下的数字减小count">
+<meta name="twitter:image" content="http://7xl4y6.com1.z0.glb.clouddn.com/imageVIM显示tab截图.png">
+<meta name="twitter:creator" content="@xujianwei201314">
+
+    
+    
+    <link rel="icon" href="/img/favico.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Jianwei&#39;s Blog" title="Jianwei&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Jianwei&#39;s Blog">Jianwei&#39;s Blog</a></h1>
+				<h2 class="blog-motto">I plunge into books like the hungery into bread！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/07/Practical_Vim_1/" title="«Practical Vim» 1" itemprop="url">«Practical Vim» 1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Jianwei Xu" target="_blank" itemprop="author">Jianwei Xu</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-06T16:12:53.000Z" itemprop="datePublished"> 发表于 2015-10-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>vim使用小技巧,鉴于大家都没有时间看长博文,我把它分成短文.</p>
+<h2 id="1-lt-C-a-gt-lt-C-x-gt-对数字执行加减操作"><a href="#1-lt-C-a-gt-lt-C-x-gt-对数字执行加减操作" class="headerlink" title="1. &lt;C-a&gt; &lt;C-x&gt;对数字执行加减操作"></a>1. <code>&lt;C-a&gt;</code> <code>&lt;C-x&gt;</code>对数字执行加减操作</h2><ul>
+<li><code>[count]&lt;C-a&gt;</code>来使光标下的数字增加count</li>
+<li><code>[count]&lt;C-x&gt;</code>使光标下的数字减小count</li>
+</ul>
+<a id="more"></a>
+<p>如果没有[count]，那么光标下的数字会逐一加减，再不济，光标没有在数字上也没关系，执行该命令后，会在当前行向后查找数字，并执行在第一个数字上。<br><strong><em>注意</em></strong>: 0开头的数字表示八进制，0x开头的数字代表十六进制，所以在07和0xa上执行<code>&lt;C-a&gt;</code>的结果分别为：010和0xb。</p>
+<h2 id="2-大小写反转"><a href="#2-大小写反转" class="headerlink" title="2. 大小写反转"></a>2. 大小写反转</h2><ol>
+<li>选中一段字符，<code>u</code>,将所有字符变为小写。</li>
+<li>选中一段字符，<code>U</code>，将所有字符变为大写。<br><strong><em>注意*</em></strong>: 以上用法是在选中一段字符的基础上，不然将会执行<code>u</code>命令，撤销了上一步操作。</li>
+<li><code>g~</code>,反转大小写</li>
+<li><code>gu</code>,转换为小写,作用类似于1</li>
+<li><code>gU</code>,转换为大写,作用类似于2</li>
+</ol>
+<h2 id="3-显示tab缩进"><a href="#3-显示tab缩进" class="headerlink" title="3. 显示tab缩进"></a>3. 显示tab缩进</h2><figure class="highlight plain"><figcaption><span>.vimrc</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set listchars=tab:\.\  </div></pre></td></tr></table></figure>
+<p><strong><em>注意</em></strong>:最后有个空格<br><img src="http://7xl4y6.com1.z0.glb.clouddn.com/imageVIM显示tab截图.png" alt="显示tab缩进截图"></p>
+<h2 id="4-调用两次操作符"><a href="#4-调用两次操作符" class="headerlink" title="4. 调用两次操作符"></a>4. 调用两次操作符</h2><p>当一个操作符调用两次,将会作用于当前行,比如<br>dd:剪切当前行<br>cc:更改当前行<br>>&gt;:缩进当前行<br>&lt;&lt;:减小缩进当前行<br>yy:复制当前行<br>==:自动缩进一整行</p>
+<h2 id="5-在插入模式下更正错误"><a href="#5-在插入模式下更正错误" class="headerlink" title="5. 在插入模式下更正错误"></a>5. 在插入模式下更正错误</h2><ul>
+<li><code>&lt;C-h&gt;</code>删除前一个字符,同<code>backspace</code></li>
+<li><code>&lt;C-w&gt;</code>删除前一个单词</li>
+<li><code>&lt;C-u&gt;</code>删除至行首</li>
+</ul>
+<h2 id="6-返回普通模式"><a href="#6-返回普通模式" class="headerlink" title="6. 返回普通模式"></a>6. 返回普通模式</h2><p>除了<code>&lt;ESC&gt;</code>以外,还有几个方法可以从插入模式切换到普通模式</p>
+<ul>
+<li><code>&lt;C-[&gt;</code>切换到普通模式</li>
+<li><code>&lt;C-o&gt;</code>切换到插入-普通模式(从插入模式临时切换到普通模式一次)</li>
+</ul>
+<p>插入-普通模式:普通模式的一个特例,能让我们执行一次普通模式的命令,执行完毕后马上回到插入模式.</p>
+<h2 id="7-在插入模式中使用vim寄存器"><a href="#7-在插入模式中使用vim寄存器" class="headerlink" title="7. 在插入模式中使用vim寄存器"></a>7. 在插入模式中使用vim寄存器</h2><ol>
+<li><code>&lt;C-r&gt;{register}</code>能将寄存器<code>{register}</code>中的内容插入到文本中. 有个问题就是如果你设置了<code>autoindent</code>或者<code>textwidth</code>那么插入进来的文本可能会有不必要的换行额外的缩进.</li>
+<li><code>&lt;C-r&gt;&lt;C-p&gt;{register}</code>这个命令更加智能,它会按照原意插入寄存器内的文本,并修正任何不必要的缩进.</li>
+</ol>
+<p>有关vim寄存器的介绍请移步到我的另外一篇<a href="/how-to-use-vim-register">博文</a></p>
+<h2 id="8-在文章中使用非常用字符"><a href="#8-在文章中使用非常用字符" class="headerlink" title="8. 在文章中使用非常用字符"></a>8. 在文章中使用非常用字符</h2><ul>
+<li>使用<code>&lt;C-v&gt;{code}</code>就能输入一个字符.比如输入字符’a’可以使用<code>&lt;C-v&gt;065</code>,输入unicode字符需要在code前面加上一个字符’u’,比如要输入<code>&lt;C-v&gt;u00bf</code>能输入一个反转的问号<code>¿</code>,好玩吧:P</li>
+<li>想知道一个字符的编码,可以在该字符上输入<code>ga</code>,即可在状态看到该字符的编码.</li>
+<li><code>&lt;C-v&gt;&lt;nondigital&gt;</code>可以插入按键本身代表的字符,比如你开启了’expandtab’选项,使用空格代替’tab’键,那么使用<code>&lt;C-v&gt;&lt;Tab&gt;</code>将输出一个’Tab’,不管’expandtab’是否开启.</li>
+<li>字符编码不太好记忆对不对?使用<code>&lt;C-k&gt;{char1}{char2}</code>能采用字符组合的方式来输入特殊字符,比如<code>&lt;C-k&gt;&lt;&lt;</code>就能输入书名号<code>«</code>,<code>&lt;C-k&gt;12</code>输入½,<code>&lt;C-k&gt;34</code>输入¾等等,更多的二合字母请参考vim文档:h digraghs-default</li>
+</ul>
+<h2 id="9-替换模式和虚拟替换模式"><a href="#9-替换模式和虚拟替换模式" class="headerlink" title="9. 替换模式和虚拟替换模式"></a>9. 替换模式和虚拟替换模式</h2><p>众所周知,<code>R</code>和<code>r</code>是使vim进入替换模式,这个替换模式是替换实际的字符,比如一个’tab’在文本显示中占据了8个空间,但是在文本中,它还是一个字符,在普通的替换模式中,使用<code>r</code>或者<code>R</code>替换’tab’字符的时候将会一次替换掉’tab’字符,而在文本显示上将会显示为一次替换了8个空格.<br>vim还提供一个虚拟替换,使用<code>gr</code>或者<code>gR</code>进入,这个虚拟替换的不同之处是:替换是按照屏幕显示的实际字符数来替换的.比如一个’tab’占据了8个空格,那么在替换的前面7个字符都将插入到’tab’字符的前面,只有在替换掉第8个字符时,’tab’字符才会被其取代.<br>ps:’tab’的宽度是可通过修改变量<code>tabstop</code>改变的.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>►<a class="article-category-link" href="/categories/Tech/«Practical-Vim»/">«Practical Vim»</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/vim/">vim</a><a href="/tags/note/">note</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/07/Practical_Vim_1/" data-title="«Practical Vim» 1 | Jianwei&#39;s Blog" data-tsina="3884609162" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/07/vim_register/" title="vim的寄存器">
+  <strong>上一篇：</strong><br/>
+  <span>
+  vim的寄存器</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/10/04/installation_fonts/"  title="字体安装">
+ <strong>下一篇：</strong><br/> 
+ <span>字体安装
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/10/07/Practical_Vim_1/" data-title="«Practical Vim» 1" data-url="http://yoursite.com/2015/10/07/Practical_Vim_1/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/«Git版本控制管理»/" title="«Git版本控制管理»">«Git版本控制管理»<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/«Practical-Vim»/" title="«Practical Vim»">«Practical Vim»<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/夜游梦话/" title="夜游梦话">夜游梦话<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/vim/" title="vim">vim<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/note/" title="note">note<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ShellScripts/" title="ShellScripts">ShellScripts<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/coding/" title="coding">coding<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ThoughtWorks/" title="ThoughtWorks">ThoughtWorks<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/systemd/" title="systemd">systemd<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/error/" title="error">error<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/font/" title="font">font<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tagCloud/" title="tagCloud">tagCloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.jianshu.com/users/f4f372fd4919/latest_articles" target="_blank" title="Jianwei&#39;s 简书">Jianwei&#39;s 简书</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/ShellScripts/" style="font-size: 13.33px;">ShellScripts</a> <a href="/tags/ThoughtWorks/" style="font-size: 10px;">ThoughtWorks</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/error/" style="font-size: 10px;">error</a> <a href="/tags/font/" style="font-size: 10px;">font</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/note/" style="font-size: 16.67px;">note</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/tagCloud/" style="font-size: 10px;">tagCloud</a> <a href="/tags/vim/" style="font-size: 20px;">vim</a>
+    </div>
+  </div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=0&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=3884609162&verifier=ba6e3e93&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Jianwei.Nice to me you! <br/>
+			This is my blog!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3884609162" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/jianwei666" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/xujianwei201314" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/xujianwei-47" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:xujianwei201314@icloud.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Jianwei Xu">Jianwei Xu</a>
+		
+		
+		</p>
+		<script type="text/javascript">
+          (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+          (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+          e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+          })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+          _st('install','n2DDxybWVFMWvmyKeD1r','2.0.0');
+        </script>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"jianwei666"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script>
+ (function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+ })();
+</script>
+
+<script>
+ (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+ })();
+</script>
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258374484'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258374484%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
