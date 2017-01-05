@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/01/05/hello-world/</loc>
+    <lastmod>2017-01-05T14:29:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2017-01-05T15:10:04.354Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/11/04/AddDaemonToSystemd/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>做一个Systemd的Daemon</title>
+        <pubTime>2015-11-04T14:35:47.000Z</pubTime>
+        
+        <tag>systemd</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/11/10/Git-patch/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git补丁</title>
+        <pubTime>2015-11-10T04:17:44.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+             
+              <breadCrumb title="«Git版本控制管理»" url="http://yoursite.com/categories/Tech/%C2%ABGit%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%AE%A1%E7%90%86%C2%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/08/06/Markdown/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>Markdown语法</title>
+        <pubTime>2015-08-06T12:41:05.000Z</pubTime>
+        
+        <tag>Markdown</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/10/07/Practical_Vim_1/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>«Practical Vim» 1</title>
+        <pubTime>2015-10-06T16:12:53.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+        <tag>note</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+             
+              <breadCrumb title="«Practical Vim»" url="http://yoursite.com/categories/Tech/%C2%ABPractical-Vim%C2%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/10/11/Practical_Vim_2/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>«Practical Vim» 2</title>
+        <pubTime>2015-10-10T16:05:03.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+        <tag>note</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+             
+              <breadCrumb title="«Practical Vim»" url="http://yoursite.com/categories/Tech/%C2%ABPractical-Vim%C2%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/12/03/Practical_Vim_3/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>«Practical Vim» 3</title>
+        <pubTime>2015-12-03T03:34:16.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+        <tag>note</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+             
+              <breadCrumb title="«Practical Vim»" url="http://yoursite.com/categories/Tech/%C2%ABPractical-Vim%C2%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/03/23/Practical_Vim_4/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>«Practical Vim» 4</title>
+        <pubTime>2016-03-23T02:08:47.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+             
+              <breadCrumb title="«Practical Vim»" url="http://yoursite.com/categories/Tech/%C2%ABPractical-Vim%C2%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/08/08/ShellScripts-Math/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>ShellScripts--数学计算</title>
+        <pubTime>2015-08-08T03:56:10.000Z</pubTime>
+        
+        <tag>ShellScripts</tag>
+         
+        <tag>coding</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/11/26/TheArtOfCommunicate/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>沟通的艺术课后感</title>
+        <pubTime>2015-11-26T02:26:23.000Z</pubTime>
+        
+        <tag>ThoughtWorks</tag>
+         
+         
+           
+             
+              <breadCrumb title="夜游梦话" url="http://yoursite.com/categories/%E5%A4%9C%E6%B8%B8%E6%A2%A6%E8%AF%9D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/07/26/ThePragmaticProgrammer/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>《程序员修炼之道-－从小工到专家》</title>
+        <pubTime>2016-07-26T15:50:55.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/10/04/check_the_buttery_states_ShellScripts/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>查看电池电量ShellScripts</title>
+        <pubTime>2015-10-03T16:21:01.000Z</pubTime>
+        
+        <tag>ShellScripts</tag>
+         
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/08/03/construction_your_blog_with_hexo/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用hexo搭建博客(vps/github)</title>
+        <pubTime>2015-08-03T14:59:25.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/10/04/error-while-loading-shared-libraries-xxxx-no-such-file-or-directory/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>error:while loading shared libraries:xxxx no such file or directory</title>
+        <pubTime>2015-10-03T16:09:11.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>error</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/09/29/github-2FA/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>github两步认证丢失后处理方法</title>
+        <pubTime>2015-09-29T05:41:52.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/08/15/Git-Change_your_commit/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git:更改你的提交</title>
+        <pubTime>2015-08-15T10:15:23.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+             
+              <breadCrumb title="«Git版本控制管理»" url="http://yoursite.com/categories/Tech/%C2%ABGit%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%AE%A1%E7%90%86%C2%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/10/04/installation_fonts/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>字体安装</title>
+        <pubTime>2015-10-04T14:29:08.000Z</pubTime>
+        
+        <tag>font</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/08/18/make_your_tagcloud_colorful/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>彩色化标签云</title>
+        <pubTime>2015-08-18T15:23:13.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>tagCloud</tag>
+         
+        <tag>html</tag>
+         
+        <tag>css</tag>
+         
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/10/07/vim_register/</loc>
+    <lastmod>2016-08-14T15:46:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>vim的寄存器</title>
+        <pubTime>2015-10-07T08:39:54.000Z</pubTime>
+        
+        <tag>vim</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tech" url="http://yoursite.com/categories/Tech/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</urlset>
